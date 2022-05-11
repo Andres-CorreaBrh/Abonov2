@@ -29,10 +29,12 @@ public class MoverCaja : MonoBehaviour
     public Text letrero;
 
     public GameObject bascula;
-     public GameObject AbonoCaja1;
-      public GameObject AbonoCaja2;
-      
-      public GameObject AbonoCaja3;
+
+    public GameObject AbonoCaja1;
+
+    public GameObject AbonoCaja2;
+
+    public GameObject AbonoCaja3;
 
     private string PesoEscogido = "10";
 
@@ -86,14 +88,13 @@ public class MoverCaja : MonoBehaviour
                 else
                 {
                     bandeja1.transform.position =
-                        new Vector3(posicionbandeja1.x- 0.1f,
+                        new Vector3(posicionbandeja1.x - 0.1f,
                             posicionbandeja1.y,
-                            posicionbandeja1.z );
-                    Debug.Log(posicionbandeja1.x);  
+                            posicionbandeja1.z);
+                    Debug.Log(posicionbandeja1.x);
                     yield return new WaitForSecondsRealtime(0.1f);
                 }
             }
-            
         }
         else if (lugar == "bascula")
         {
@@ -102,21 +103,21 @@ public class MoverCaja : MonoBehaviour
             for (; ; )
             {
                 posicionbandeja1 = bandeja1.transform.position;
-                if (posicionbandeja1.x <-1.9f)
+                if (posicionbandeja1.x < -2.1f)
                 {
                     yield return null;
                 }
                 else
                 {
                     bandeja1.transform.position =
-                        new Vector3(posicionbandeja1.x- 0.1f,
+                        new Vector3(posicionbandeja1.x - 0.1f,
                             posicionbandeja1.y,
-                            posicionbandeja1.z );
-                     Debug.Log(posicionbandeja1.x);  
+                            posicionbandeja1.z);
+                    Debug.Log(posicionbandeja1.x);
                     yield return new WaitForSecondsRealtime(0.1f);
                 }
             }
-        } 
+        }
         else if (lugar == "quimicos")
         {
             posicionbascula = bascula.transform.position;
@@ -124,45 +125,74 @@ public class MoverCaja : MonoBehaviour
             for (; ; )
             {
                 posicionbandeja1 = bandeja1.transform.position;
-                if (posicionbandeja1.x<-6.15)
+                if (posicionbandeja1.x < -6.03)
                 {
                     yield return null;
                 }
                 else
                 {
                     bandeja1.transform.position =
-                        new Vector3(posicionbandeja1.x- 0.1f,
+                        new Vector3(posicionbandeja1.x - 0.1f,
                             posicionbandeja1.y,
                             posicionbandeja1.z);
-                            Debug.Log(posicionbandeja1.x);  
+                    Debug.Log(posicionbandeja1.x);
                     yield return new WaitForSecondsRealtime(0.1f);
                 }
             }
         }
-         else if (lugar == "secado")
+        else if (lugar == "revolver")
+        {
+            posicionbascula = bascula.transform.position;
+
+            for (; ; )
+            {
+                bandeja1.transform.position =
+                    new Vector3(posicionbandeja1.x,
+                        posicionbandeja1.y,
+                        posicionbandeja1.z - 0.1f);
+
+                yield return new WaitForSecondsRealtime(0.05f);
+                bandeja1.transform.position =
+                    new Vector3(posicionbandeja1.x,
+                        posicionbandeja1.y,
+                        posicionbandeja1.z + 0.1f);
+                yield return new WaitForSecondsRealtime(0.05f);
+                bandeja1.transform.position =
+                    new Vector3(posicionbandeja1.x,
+                        posicionbandeja1.y,
+                        posicionbandeja1.z - 0.1f);
+                yield return new WaitForSecondsRealtime(0.05f);
+                bandeja1.transform.position =
+                    new Vector3(posicionbandeja1.x,
+                        posicionbandeja1.y,
+                        posicionbandeja1.z + 0.1f);
+                yield return null;
+            }
+        }
+        else if (lugar == "secado")
         {
             posicionbascula = bascula.transform.position;
 
             for (; ; )
             {
                 posicionbandeja1 = bandeja1.transform.position;
-                if (posicionbandeja1.x<-9.15)
+                if (posicionbandeja1.x < -16.15)
                 {
                     yield return null;
                 }
                 else
                 {
                     bandeja1.transform.position =
-                        new Vector3(posicionbandeja1.x- 0.1f,
+                        new Vector3(posicionbandeja1.x - 0.1f,
                             posicionbandeja1.y,
                             posicionbandeja1.z);
-                            Debug.Log(posicionbandeja1.x);  
+                    Debug.Log(posicionbandeja1.x);
                     yield return new WaitForSecondsRealtime(0.1f);
                 }
             }
         }
     }
-    
+
     public IEnumerator MovimientoCaja2(string lugar)
     {
         if (lugar == "Tolva")
@@ -401,18 +431,19 @@ public class MoverCaja : MonoBehaviour
         }
     }
 
-    public void activarAbono(int numeroCaja)
+    public void activarAbono(string numeroCaja)
     {
-        if(numeroCaja==1)
+        if (numeroCaja == "1")
         {
-AbonoCaja1.SetActive(true);
-        }else if( numeroCaja==2)
+            AbonoCaja1.SetActive(true);
+        }
+        else if (numeroCaja == "2")
         {
             AbonoCaja2.SetActive(true);
-        }else if(numeroCaja==3)
+        }
+        else if (numeroCaja == "3")
         {
             AbonoCaja3.SetActive(true);
         }
-        
     }
 }

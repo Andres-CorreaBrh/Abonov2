@@ -47,6 +47,7 @@ separadas dividido en los diferentes porcentajes y continua sobre la banda trans
 [[Verificar pesaje de material en balanza digital]]
 {}
 <
+bandeja1.activarAbono("1")
 Simulator.Wait(2)
 bandeja1.moverCaja("1";"bascula")
 >
@@ -79,7 +80,8 @@ Si el lote de producción con la bandeja tiene el pesaje correcto, continua en l
 {}
 <
 bandeja1.moverCaja("1";"quimicos")
-Simulator.Wait(5)
+Simulator.Wait(10)
+bandeja1.moverCaja("1";"revolver")
 bandeja1.moverCaja("1";"secado")
 >
 
